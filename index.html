@@ -1,11 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-16">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="slider.js"></script>
+    <style>
+        /* .abc{
+            color: #e6ddd2;
+            background: linear-gradient(to right, #007991, #78ffd6);
+        } */
+        .hero-button{
+            border:2px solid transparent;
+            background: linear-gradient(#102c2c, #102c2c) padding-box,linear-gradient(to right, #007991, #78ffd6) border-box; 
+            border-radius: 30px;
+            transition:0.5s ease-in-out;
+        }
+        .hero-button:hover{
+            transition:0.5s ease-in-out;
+            background: linear-gradient(transparent, transparent) padding-box,linear-gradient(to right, #007991, #78ffd6) border-box; 
+        }
+        .hero-button:hover .right-arrow{
+            transition:0.5s ease-in-out;
+            margin-left: 7px;
+        }
+        .addHover:hover .arrow{
+            transition:0.5s ease-in-out;
+            padding-left: 10px;
+        }
+        .line-1{
+            animation:goforward 5s linear;
+            animation-iteration-count: 1;
+        }
+        .line-2{
+            animation:goforward 15s linear;
+            animation-iteration-count: 1;
+        }
+        @keyframes goforward{
+            from{
+                width: 0%;
+            }
+            to{
+                width: 100%;
+            }
+        }
+        
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            screens:{
+                sm:'480px',
+                md:'720px',
+                lg:'1080px',
+                xl:'1355px',
+                xxl:'1600px'
+            },
+            fontFamily: {
+                'sans': ['sans-serif'],
+                'shopify':['Lato'],
+            },
+            extend: {
+              colors: {
+                color1:'#ffffff',
+                color2:'#000000',
+                color3:'#e6ddd2',
+                color4:'#102c2c',
+                color5:'#348464',
+                color6:'#007991',
+                color7:'#78ffd6',
+                color8:'#944f4f'
+              }
+            }
+          }
+        }
+      </script>
 </head>
 <body>
+    <div class="container max-w-[1600px] mx-auto relative">
+        <div class="nav-bar fixed w-full xxl:w-[1600px] left-[50%] top-0 z-30 translate-x-[-50%] bg-color4 flex justify-between items-center py-[10px] px-[20px] md:px-[50px] md:py-[20px] xl:px-[100px]">
+            <div class="nav-left flex justify-left items-center cursor-pointer">
+                <div class="logo">
+                    <img class="w-[40px]" src="./assets/shopify-logo.png" alt="">
+                </div>
+                <div class="header text-[30px] font-shopify text-color1 font-bold">shopify</div>
+                <div class="nav-left-big-screen hidden lg:flex justify-left items-center gap-[35px] ml-[40px]">
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        <div>Start</div> 
+                       <div class="text-[14px] font-medium flex justify-center items-center">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        <div>Sell</div> 
+                       <div class="text-[14px] font-medium flex justify-center items-center">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        <div>Market</div> 
+                       <div class="text-[14px] font-medium flex justify-center items-center">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        <div>Manage</div> 
+                       <div class="text-[14px] font-medium flex justify-center items-center">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right font-sans flex justify-left items-center">
+                <div class="nav-mobile flex items-center gap-[40px] lg:hidden">
+                    <div class="text-color3 font-sans cursor-pointer">Log in</div>
+                    <div class="text-color1 hamburger text-[25px] cursor-pointer" onclick="openNavbar();">&#9776;</div>
+                </div>
+                <div class="nav-right-big-screen hidden lg:flex justify-right items-center gap-[35px]">
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        Pricing
+                    </div>
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                       <div>Learn</div> 
+                       <div class="text-[14px] font-medium flex justify-center items-center">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </div>
+                    <div class="text-color3 font-sans cursor-pointer text-center text-[16px] font-medium flex justify-center items-center gap-[5px]">
+                        Log in
+                    </div>
+                    <button class="bg-color5 text-color1 w-[150px] h-[45px] rounded-[5px] font-bold">Start free trial</button>
+                </div>
+            </div>
+        </div>
+        <!-- mobile navbar  -->
+        <div class="bg-color1 fixed-navbar transition-all ease-in-out duration-300 w-0 h-0 overflow-hidden z-50 fixed top-0 right-0 text-gray-800 px-[20px] lg:hidden">
+            <div class="nav-items flex justify-between items-center text-lg font-medium py-[20px] border-b">
+                <div class="logo">
+                    <img class="w-[40px]" src="./assets/shopify-logo.png" alt="">
+                </div>
+                <div class="text-color2 close-btn text-[40px] cursor-pointer" onclick="closeNavbar();">&times;</div>
+            </div> 
+            <ul class="flex flex-col gap-[20px] text-gray-700 py-[30px] border-b">
+                <li class="text-[18px] font-bold">Start</li>
+                <li class="text-[18px] font-bold">Sell</li>
+                <li class="text-[18px] font-bold">Market</li>
+                <li class="text-[18px] font-bold">Manage</li>
+            </ul>
+            <ul class="flex flex-col gap-[20px] text-gray-700 py-[30px] border-b">
+                <li class="text-[18px] font-bold">Pricing</li>
+                <li class="text-[18px] font-bold">Learn</li>
+                <button class="bg-transparent hover:bg-color5 hover:text-color1 text-color2 w-full h-[48px] rounded-[5px] font-bold border-2 border-color5">Log in</button>
+                <button class="bg-color5 text-color1 w-full h-[48px] rounded-[5px] font-bold">Start free trial</button>
+            </ul>
+            <ul class="flex flex-col gap-[20px] text-gray-500 py-[30px]">
+                <li class="text-[18px] font-bold">About</li>
+                <li class="text-[18px] font-bold">Careers</li>
+                <li class="text-[18px] font-bold">Press and Media</li>
+                <li class="text-[18px] font-bold">Shopify Plus</li>
+                <li class="text-[18px] font-bold">Sitemap</li>
+            </ul>
+        </div>
+        
+
+        <div class="hero-btn relative bg-color4 py-[10px] px-[20px] md:px-[50px] md:py-[20px] xl:px-[100px] pt-[100px] md:pt-[100px]">
+            <button class="hero-button absolute md:static left-[-20px] pl-[40px] text-[14px] md:text-[16px] text-color1 font-semibold px-[15px] md:px-[0px] py-[8px] md:w-[590px] flex justify-center items-center">
+                <span>Shopify Editions, Summer ’22 is here</span>
+                &nbsp;
+                <span class="hidden md:inline-block">| Discover 100+ new features</span>
+                &nbsp;
+                <span class="right-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+        </div>
+        <div class="bg-color4 flex flex-col md:flex-row justify-between items-center gap-[50px] pt-[50px] md:pt-[20px]">
+            <div class="w-full md:w-1/2 flex flex-col justify-left gap-[30px] md:gap-[10px] lg:gap-[30px] pl-[20px] pr-[20px] md:pr-[0px] md:pl-[50px] xl:pl-[100px]">
+                <h1 class="text-[50px] md:text-[3.5vw] leading-[50px] md:leading-[40px] xl:leading-[70px] text-color1 font-sans font-black">
+                    If you can dream it,<br>you can sell it with<br>Shopify
+                </h1>
+                <p class="text-color3 text-[18px]">
+                    Build your business here. Take it anywhere.
+                </p>
+                <button class="bg-color5 text-color1 w-[220px] h-[50px] rounded-[5px] font-bold">Get started on Shopify</button>
+            </div>
+            <div class="w-full md:w-1/2 relative">
+                <img class="w-full" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/hero-small-fb5c6e3ede460f1cc7c19b5066f086cf59a5f68ea42ac778602a8486bf66be3f.png" alt="">
+                <div class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-color1 w-[70px] h-[70px] rounded-[50%] flex justify-center items-center text-[12px] cursor-pointer shadow-black">
+                    <i class="fa-solid fa-play"></i>
+                </div>
+            </div>
+        </div>
+        <div class="py-[50px] px-[20px] md:px-[50px] md:py-[100px] md:pb-[0px] xl:px-[100px]">
+            <h1 class="text-[25px] font-medium md:text-[50px] text-center md:text-left">
+                Discover why millions of entrepreneurs<br>choose Shopify to build their business—<br>from Hello World to IPO.
+            </h1>
+        </div>
+        <div class="hidden lg:block py-[50px] pb-[50px] px-[20px] md:px-[50px] md:py-[100px] md:pb-[50px] xl:px-[100px]">
+            <div class="image-slider mx-auto w-full h-[564px] pt-[70px] bg-color8 rounded-3xl">
+                <img class="h-[100%] mx-auto" id="slider" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/store-builder-desktop-small-83daaddfcd3fa5fa9d8f72d27f55d3c2a2c56e47dbc82fc128ec7e451af21803.png" alt="">
+            </div>
+        </div>
+        <div class="mobile-slider py-[50px] px-[20px] lg:hidden">
+            <div class="image-slider-mobile mx-auto w-full h-[700px] px-[20px] py-[60px] bg-color8 rounded-3xl flex justify-center items-center">
+                <img class="mx-auto" id="slider-mobile" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/store-builder-mobile-small-673695f84b326e3ba2adad96648aba6c969e431c7d02a72d1ab3ca3aeb780500.png" alt="">
+            </div>
+        </div>
+        <div class="w-full flex justify-between items-center gap-[30px] px-[20px] pb-[30px] pt-[0px] md:px-[50px] xl:px-[100px]">
+            <div class="w-1/3 h-[3px] bg-gray-400">
+                <div class="w-[0px] line1 h-[3px] bg-color2 overflow-hidden line-1"></div>
+            </div>
+            <div class="w-1/3 h-[3px] bg-gray-400">
+                <div class="w-[0px] line2 h-[3px] bg-color2 overflow-hidden"></div>
+            </div>
+            <div class="w-1/3 h-[3px] bg-gray-400">
+                <div class="w-[0px] line3 h-[3px] bg-color2 overflow-hidden"></div>
+            </div>
+        </div>
+        <div class="w-full flex justify-between items-center gap-[30px] px-[20px] pb-[35px] md:px-[50px] xl:px-[100px]">
+            <div class="item1 w-full md:w-1/3 flex flex-col gap-[20px]">
+                <h2 class="text-[24px]">Store Builder</h2>
+                <p class="text-color2">Bring your vision to life with our easy-to-use store creator. No coding expertise required—just your next big idea.</p>
+                <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                    <div class="">Build the brand you want</div>
+                    <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="item2 hidden w-full md:w-1/3 md:flex flex-col gap-[20px]">
+                <h2 class="text-[24px]">Themes</h2>
+                <p class="text-color2">Select from hundreds of customizable templates crafted by a community of world-class designers.</p>
+                <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                    <div class="">Explore more Themes</div>
+                    <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="item3 hidden w-full md:w-1/3 md:flex flex-col gap-[20px]">
+                <h2 class="text-[24px]">App Store</h2>
+                <p class="text-color2">Add more features and functionality to your online store with app extensions from trusted Shopify partners.</p>
+                <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                    <div class="">There’s an app for that</div>
+                    <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col-reverse md:flex-row justify-center items-center gap-[50px] px-[20px] py-[70px]">
+            <div class="w-full md:w-1/2 flex justify-center items-center">
+                <div class="flex justify-center flex-col gap-[20px]">
+                    <h2 class="text-[30px]">Connect with customers everywhere</h2>
+                    <p class="text-gray-500">Sell online, in person, or both with the marketing tools, social<br>integrations, and sales channels you need to get your products in<br>front of customers—and out the door.</p>
+                    <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                        <div class="">Marketing made easy</div>
+                        <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="img w-full bg-red-100 md:w-1/2 rounded-3xl py-[60px]">
+                <img class="w-[50%] mx-auto" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/sell-small-a7aadbd394716dd8df2b1959769a24827ac97161b67013f4926bb0dee7133ee9.png" alt="">
+            </div>
+        </div>
+        <div class="flex flex-col-reverse md:flex-row-reverse justify-center items-center gap-[50px] px-[20px] py-[70px]">
+            <div class="w-full md:w-1/2 flex justify-center flex-col gap-[20px]">
+                <h2 class="text-[30px]">Everything you need to succeed</h2>
+                <p class="text-gray-500">Manage inventory, track payments, and view real-time business insights from a<br>single dashboard. We’ve built all the tools you need, so you can focus on building<br>your business.</p>
+                <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                    <div class="">Marketing made easy</div>
+                    <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="img w-full md:w-1/2 bg-cyan-200 py-[60px] rounded-3xl">
+                <img class="w-[80%] mx-auto" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/manage-small-6b3e63485d8e7fda3a9b55feae5f234056786d870d0152d308a75b1debd3bace.png" alt="">
+            </div>
+        </div>
+        <div class="flex flex-col justify-center items-center px-[20px] lg:px-[70px] py-[70px] bg-cyan-50">
+            <div>
+                <h1 class="text-center text-color2 font-medium font-sans text-[40px] md:text-[60px]">Empowering entrepreneurs<br>everywhere</h1>
+            </div>
+            <div class="w-full xl:translate-y-[-150px] relative">
+                <img class="w-full" src="./assets/globe.png" alt="" class="">
+                <div class="play-icon absolute left-[30px] bottom-[50px] md:bottom-[200px] text-[30px] md:text-[50px] text-color5 cursor-pointer" onclick="this.style.display='none';document.querySelector('.pause-icon').style.display='inline-block';">▶</div>
+                <div class="pause-icon absolute left-[30px] bottom-[50px] md:bottom-[200px] text-[30px] md:text-[50px] text-color5 cursor-pointer hidden" onclick="this.style.display='none';document.querySelector('.play-icon').style.display='inline-block';">⏸</div>
+            </div>
+            <div class="grid grid-cols-2 place-items-center md:flex md:justify-between md:items-center w-full gap-[10px] xl:translate-y-[-100px]">
+                <div class="">
+                    <h1 class="text-color4 font-extrabold text-[40px] lg:text-[70px]">Millions</h1>
+                    <h2 class="color2 text-[20px]">of merchants worldwide</h2>
+                </div>
+                <div class="">
+                    <h1 class="text-color4 font-extrabold text-[40px] lg:text-[70px]">175</h1>
+                    <h2 class="color2 text-[20px]">countries on Shopify</h2>
+                </div>
+                <div class="">
+                    <h1 class="text-color4 font-extrabold text-[40px] lg:text-[70px]">5M</h1>
+                    <h2 class="color2 text-[20px]">jobs supported in 2021</h2>
+                </div>
+                <div class="">
+                    <h1 class="text-color4 font-extrabold text-[40px] lg:text-[70px]">$444B+</h1>
+                    <h2 class="color2 text-[20px]">global economic activity</h2>
+                </div>
+            </div>
+        </div>
+        <div class="w-full flex flex-col justify-center items-center px-[20px] lg:px-[70px] py-[70px] pb-[10px]">
+            <div class="merchant1 flex flex-col-reverse md:flex-row justify-between items-center gap-[50px] md:gap-[100px]">
+                <div class="w-full flex flex-1 justify-center flex-col gap-[20px]">
+                    <h2 class="text-[18px] lg:text-[26px] text-gray-800">Meet the merchants who chose Shopify</h2>
+                    <p class="text-color2 text-[20px] lg:text-[30px]">
+                        “We’ve been able to build something in 3 years that a lot of brands haven’t actually gotten to in 10 years.”
+                    </p>
+                    <div class="addHover flex justify-left items-center cursor-pointer text-color2 text-[16px] font-bold">
+                        <div class="">Chioma | Co-Founder & CEO</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-[400px] md:h-[370px]">
+                    <img class="w-full md:w-[400px] md:h-[377px]" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/cee-cees-closet-small-810976d3cd1e243d45668e81d0e12e6e95b7f2c3952ff14116673c0b73a31684.png" alt="">
+                </div>
+            </div>
+            <div class="merchant2 hidden flex-col-reverse md:flex-row justify-between items-center gap-[50px] md:gap-[100px]">
+                <div class="w-full flex flex-1 justify-center flex-col gap-[20px]">
+                    <h2 class="text-[18px] lg:text-[26px] text-gray-800">Meet the merchants who chose Shopify</h2>
+                    <p class="text-color2 text-[20px] lg:text-[30px]">
+                        “Shopify just gives me a snapshot of what I need to do and where my business stands. I know what I need to take care of. That helps me give more time to the actual creation of my work.”
+                    </p>
+                    <div class="addHover flex justify-left items-center cursor-pointer text-color2 text-[16px] font-bold">
+                        <div class="">Risa | Owner</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-[400px] md:h-[370px]">
+                    <img class="w-full md:w-[400px] md:h-[377px]" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/papallama-small-57db700b61a04b89298d3ad1b34911ab5c0499b4c76056b7c349b4f1102b0451.png" alt="">
+                </div>
+            </div>
+            <div class="merchant3 hidden flex-col-reverse md:flex-row justify-between items-center gap-[50px] md:gap-[100px]">
+                <div class="w-full flex flex-1 justify-center flex-col gap-[20px]">
+                    <h2 class="text-[18px] lg:text-[26px] text-gray-800">Meet the merchants who chose Shopify</h2>
+                    <p class="text-color2 text-[20px] lg:text-[30px]">
+                        “I chose to use Shopify because it was a no brainer! You don’t have to hire a fancy web designer. I was able to add my photos onto my store and have it up and running within an hour!”
+                    </p>
+                    <div class="addHover flex justify-left items-center cursor-pointer text-color2 text-[16px] font-bold">
+                        <div class="">Chef J. Jackson | Founder</div>
+                    </div>
+                </div>
+                <div class="w-full md:w-[400px] md:h-[370px]">
+                    <img class="w-full md:w-[400px] md:h-[377px]" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/chef-j-jackson-small-ee03785c831699c21284d862ae207686a25f6261c26dba579e9d306bda5d86e7.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center md:justify-start md:items-start gap-[20px] px-[20px] lg:px-[70px] pb-[100px]">
+            <div class="left w-[60px] h-[60px] bg-color2 rounded-full text-color1 font-bold text-[20px] flex justify-center items-center cursor-pointer" onclick="previousMerchant()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="right w-[60px] h-[60px] bg-color2 rounded-full text-color1 font-bold text-[20px] flex justify-center items-center cursor-pointer" onclick="nextMerchant()">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+        <div class="flex flex-col-reverse md:flex-row-reverse justify-center items-center md:gap-[50px] px-[20px]">
+            <div class="w-full md:w-1/2 flex justify-center flex-col gap-[20px]">
+                <h2 class="text-[40px] font-medium">Shopify Editions</h2>
+                <p class="text-gray-500 text-[17px]">Welcome to Shopify Editions, where twice a year we pull back <br>the curtain and show you the hundreds of updates we’re <br>making as we go all-in on the Connect to Consumer era of <br>business.</p>
+                <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                    <div class="">Take a peek</div>
+                    <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                </div>
+            </div>
+            <div class="img w-full md:w-1/2 py-[60px] rounded-3xl">
+                <img class="w-[100%] mx-auto" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/editions-small-8c5edf8a36e7580131901fc99fc46c5d9729311e9a764c201cc7ce5f3df2db61.gif" alt="">
+            </div>
+        </div>
+        <div class="flex flex-col-reverse lg:flex-row justify-center items-center md:gap-[50px] my-[50px]">
+            <div class="w-full lg:w-1/2 flex flex-col gap-[20px] justify-center items-left box-border py-[30px] px-[20px] md:pl-[50px]">
+                <h1 class="text-[35px] font-semibold md:text-[45px] font-medium">The help you need, <br>when you need it</h1>
+                <div class="grid md:grid-cols-2 place-items-center gap-[20px]">
+                    <div class="w-full flex justify-center flex-col gap-[20px]">
+                        <h2 class="text-[20px] font-medium">Shopify Editions</h2>
+                        <p class="text-gray-500 text-[17px]">Get all the marketing and business strategy tips you need to help you run an online business.</p>
+                        <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                            <div class="">Take a peek</div>
+                            <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center flex-col gap-[20px]">
+                        <h2 class="text-[20px] font-medium">Online Courses</h2>
+                        <p class="text-gray-500 text-[17px]">Learn from the best with instant access to lessons from successful entrepreneurs around the world.</p>
+                        <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                            <div class="">Take a peek</div>
+                            <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center flex-col gap-[20px]">
+                        <h2 class="text-[20px] font-medium">Shopify Editions</h2>
+                        <p class="text-gray-500 text-[17px]">Connect with a community of brands, partners, and fellow merchants who understand Shopify.</p>
+                        <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                            <div class="">Take a peek</div>
+                            <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                    <div class="w-full flex justify-center flex-col gap-[20px]">
+                        <h2 class="text-[20px] font-medium">Shopify Editions</h2>
+                        <p class="text-gray-500 text-[17px]">Find answers in a flash with your dedicated resource for articles and videos from our Support team.</p>
+                        <div class="addHover flex justify-left items-center cursor-pointer text-color5 text-[16px] font-bold">
+                            <div class="">Take a peek</div>
+                            <div class="pl-[5px] arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="img w-full lg:w-1/2">
+                <img class="w-full h-full" src="https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/help-mobile-small-304a187a65c69e4987d80f0ccaffc3bf7c3265ec8e430a3fc2a7e03a7f9e79f6.jpg" alt="">
+            </div>
+        </div>
+        <div class="px-[20px] flex flex-col justify-center items-center gap-[25px] my-[50px] text-center">
+            <h1 class="text-[35px] font-semibold">Grow your business here</h1>
+            <p class="text-[20px] text-gray-500">Whether you want to sell products down the street or around the world, we have all the tools you need.</p>
+            <button class="bg-color5 text-color1 w-[150px] h-[45px] rounded-[5px] font-bold">Start free trial</button>
+        </div>
+        <div class="footer flex flex-col bg-color4 px-[20px]">
+            <ul class="text-[16px] font-bold text-color1 md:px-[50px] py-[30px] flex justify-center items-center flex-wrap md:justify-start gap-[20px] border-b border-gray-700">
+                <li>About</li>
+                <li>Careers</li>
+                <li>Press and Media</li>
+                <li>Shopify Plus</li>
+                <li>Sitemap</li>
+            </ul>
+            <div class="text-[15px] text-color1 md:px-[50px] py-[20px] flex justify-between flex-wrap gap-[20px]">
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase">ONLINE STORE</li>
+                    <li>Sell Online</li>
+                    <li>Features</li>
+                    <li>Examples</li>
+                    <li>Website builder</li>
+                    <li>Online retail</li>
+                </ul>
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase"></li>
+                    <li>Ecommerce website</li>
+                    <li>Domain names</li>
+                    <li>Themes</li>
+                    <li>Shopping cart</li>
+                    <li>Ecommerce hosting</li>
+                </ul>
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase"></li>
+                    <li>Mobile Ecommerce</li>
+                    <li>Ecommerce software</li>
+                    <li>Online store builder</li>
+                    <li>Dropshipping Business</li>
+                    <li>Store themes</li>
+                </ul>
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase">Points of Sale</li>
+                    <li>Point of sale</li>
+                    <li>Features</li>
+                    <li>Hardware</li>
+                </ul>
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase">Support</li>
+                    <li>24/7 support</li>
+                    <li>Shopify Help Center</li>
+                    <li>Shopify Community</li>
+                    <li>API Documentation</li>
+                    <li>Free tools</li>
+                    <li>Free stock photos</li>
+                    <li>Website for sale</li>
+                    <li>Logo Maker</li>
+                    <li>Business name generator</li>
+                    <li>Research</li>
+                    <li>Legal</li>
+                </ul>
+                <ul class="flex flex-col gap-[10px]">
+                    <li class="font-extrabold uppercase">Shopify</li>
+                    <li>Contact</li>
+                    <li>Partner Program</li>
+                    <li>Affiliate Program</li>
+                    <li>App developers</li>
+                    <li>Investors</li>
+                    <li>Blog topics</li>
+                    <li>Community Events</li>
+                    <li>Business Encyclopedia</li>
+                </ul>
+            </div>
+            <div class="text-[20px] font-bold text-color1 md:px-[50px] py-[50px] flex justify-center md:justify-between items-center flex-wrap md:justify-start gap-[20px] border-t border-gray-700">
+                <ul class="flex gap-[30px]">
+                    <li><i class="fa-brands fa-facebook"></i></li>
+                    <li><i class="fa-brands fa-twitter"></i></li>
+                    <li><i class="fa-brands fa-youtube"></i></li>
+                    <li><i class="fa-brands fa-instagram"></i></li>
+                    <li><i class="fa-brands fa-linkedin-in"></i></li>
+                    <li><i class="fa-brands fa-pinterest"></i></li>
+                </ul>
+                <ul class="flex gap-[30px] text-[16px] font-medium">
+                    <li>Terms of Service</li>
+                    <li>Privacy Policy</li>
+                    <li><i class="fa-solid fa-globe"></i>&nbsp;&nbsp;USA&nbsp;&nbsp;<i class="fa-solid fa-caret-down"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openNavbar() {
+            let navbar = document.querySelector('.fixed-navbar');
+            navbar.style.height = "100%";
+            navbar.style.width = "100%";
+        }
+        function closeNavbar() {
+            let navbar = document.querySelector('.fixed-navbar');
+            navbar.style.width = "0%";
+            navbar.style.height = "0%";
+        }
+        
+    </script>
 </body>
 </html>
