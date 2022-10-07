@@ -25,18 +25,18 @@
 
 
 
-const images = ['https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/store-builder-desktop-small-83daaddfcd3fa5fa9d8f72d27f55d3c2a2c56e47dbc82fc128ec7e451af21803.png',
-                'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/sense-desktop-small-b78e5eb27373e527dba35b147124b432bbbaf54fb2c712fba5ba5f31d2209174.png',
-                'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/dawn-desktop-small-3e34d3fac5faa12a1563199c58176311cf9354bb550c5cf5d2087f34ccd38f8a.png',
-                'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/crave-desktop-small-b7b589ca7d4c48946538c8a4d1ff95b77cb648b605e14b548224d1b5fb9832a3.png',
-                'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/app-store-desktop-small-174232c50e27da8ef165d480bf85e1116d855852334b13c42076e78f30d12e24.png',
+const images = ['./assets/2.webp',
+                './assets/3.webp',
+                './assets/4.webp',
+                './assets/5.webp',
+                './assets/6.webp',
                 ];
 
-const mobileImages = ['https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/store-builder-mobile-small-673695f84b326e3ba2adad96648aba6c969e431c7d02a72d1ab3ca3aeb780500.png',
-                      'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/sense-mobile-small-98b6094f1800be603c97e9b58de0176637813ef129bc153bc81827140defc5d3.png',
-                      'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/dawn-mobile-small-b603b420e0d1a89e3b276a1c6eb6529410071aa466ac95c4af1601f352b80528.png',
-                      'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/crave-mobile-small-2149947bec1c90769bd5d6bbdcf31e4a41cc4f334845f1dd34b44f4bf8b484a4.png',
-                      'https://cdn.shopify.com/shopifycloud/brochure/assets/home/desktop-refresh/app-store-mobile-small-abaa0f8034f3fd547bab645e7f4023ef7818f4d4b4fb73f2b05f7888f220c527.png'
+const mobileImages = ['./assets/mobile2.webp',
+                      './assets/mobile3.webp',
+                      './assets/mobile4.webp',
+                      './assets/mobile5.webp',
+                      './assets/mobile6.png'
                     ];
 
 const colors = ['rgb(148, 79, 79)','rgb(176, 244, 82)','rgb(14, 59, 126)','rgb(149, 7, 123)','rgb(4, 4, 4)'];
